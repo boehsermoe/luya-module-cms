@@ -75,7 +75,7 @@ class LangSwitcherSqliteTest extends WebApplicationTestCase
                 'is_hidden' => 0,
                 'is_offline' => 0,
                 'nav_container_id' => 1,
-                'parent_nav_id' => 0,
+                'parent_nav_id' => null,
                 'is_draft' => 0,
                 'is_deleted' => 0,
             ]

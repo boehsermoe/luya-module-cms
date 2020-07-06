@@ -69,10 +69,11 @@ class Nav extends ActiveRecord
     public function rules()
     {
         return [
-            [['nav_container_id', 'parent_nav_id'], 'required'],
+            [['nav_container_id'], 'required'],
             [['is_hidden', 'is_offline', 'sort_index', 'is_deleted', 'is_home', 'is_draft', 'layout_file'], 'safe'],
             [['layout_file'], 'match', 'pattern' => '/^[a-zA-Z0-9\.\-\_]+$/'],
-            [['publish_from', 'publish_till'], 'integer'],
+            [['parent_nav_id', 'publish_from', 'publish_till'], 'integer'],
+            [['parent_nav_id'], 'default', 'value' => null]
         ];
     }
 
@@ -325,7 +326,7 @@ class Nav extends ActiveRecord
         $move = self::findOne($moveNavId);
 
         $move->nav_container_id = $toCatId;
-        $move->parent_nav_id = 0;
+        $move->parent_nav_id = null;
         $move->update();
 
         foreach ($move->getRecursiveChildren() as $child) {
@@ -639,7 +640,7 @@ class Nav extends ActiveRecord
         $navItemPage->timestamp_create = time();
         $navItemPage->version_alias = Module::VERSION_INIT_LABEL;
         $navItemPage->create_user_id = Module::getAuthorUserId();
-        $navItemPage->nav_item_id = 0;
+        $navItemPage->nav_item_id = null;
         
         if (!$navItemPage->validate()) {
             return $navItemPage->getErrors();
@@ -716,7 +717,7 @@ class Nav extends ActiveRecord
             'nav_item_type' => 1
         ];
         
-        $navItemPage->attributes = ['nav_item_id' => 0, 'layout_id' => $layoutId, 'create_user_id' => Module::getAuthorUserId(), 'timestamp_create' => time(), 'version_alias' => Module::VERSION_INIT_LABEL];
+        $navItemPage->attributes = ['nav_item_id' => null, 'layout_id' => $layoutId, 'create_user_id' => Module::getAuthorUserId(), 'timestamp_create' => time(), 'version_alias' => Module::VERSION_INIT_LABEL];
 
         if (!$nav->validate()) {
             $_errors = ArrayHelper::merge($nav->getErrors(), $_errors);
@@ -725,6 +726,7 @@ class Nav extends ActiveRecord
             $_errors = ArrayHelper::merge($navItem->getErrors(), $_errors);
         }
         if (!$navItemPage->validate()) {
+            die("FOO");
             $_errors = ArrayHelper::merge($navItemPage->getErrors(), $_errors);
         }
 

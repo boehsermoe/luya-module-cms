@@ -251,7 +251,7 @@ class NavItemPageBlockItem extends ActiveRecord
         if ($this->id == $this->prev_id) {
             // ensurer no infinte requests can happen.
             // https://github.com/luyadev/luya-module-cms/issues/106
-            $this->updateAttributes(['prev_id' => 0]);
+            $this->updateAttributes(['prev_id' => null]);
         }
 
         $this->updateNavItemTimesamp();

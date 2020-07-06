@@ -236,13 +236,13 @@ class NavItem extends ActiveRecord implements GenericSearchInterface
      */
     public function verifyAlias($alias, $langId)
     {
-        if (Yii::$app->hasModule($alias) && $this->parent_nav_id == 0) {
+        if (Yii::$app->hasModule($alias) && $this->parent_nav_id == null) {
             $this->addError('alias', Module::t('nav_item_model_error_modulenameexists', ['alias' => $alias]));
 
             return false;
         }
 
-        if ($this->parent_nav_id === null) {
+        if ($this->parent_nav_id === 0) {
             $this->addError('parent_nav_id', Module::t('nav_item_model_error_parentnavidcannotnull'));
             
             return false;

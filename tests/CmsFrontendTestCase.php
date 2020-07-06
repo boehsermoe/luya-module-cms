@@ -62,7 +62,7 @@ class CmsFrontendTestCase extends WebApplicationTestCase
             'image_id' => 0,
             'timestamp_create' => time(),
             'timestamp_update' => time(),
-            'parent_nav_id' => 0,
+            'parent_nav_id' => null,
             'is_home' => 0,
             'sort_index' => 1000,
             'depth' => 1,

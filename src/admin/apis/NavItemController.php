@@ -517,11 +517,11 @@ class NavItemController extends \luya\admin\base\RestController
         if ($node) {
             $data .= $node->title;
             $parentNavId = $navId;
-            while ($parentNavId != 0) {
+            while ($parentNavId != null) {
                 $parentNavIdModel = Nav::findOne($parentNavId);
                 if ($parentNavIdModel) {
                     $parentNavId = $parentNavIdModel->parent_nav_id;
-                    if ($parentNavId != 0) {
+                    if ($parentNavId != null) {
                         $node = NavItem::find()->where(['nav_id' => $parentNavId])->one();
                         if ($parentNavId) {
                             $data = $node->title . '/' . $data;

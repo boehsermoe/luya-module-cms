@@ -40,7 +40,7 @@
 					}
 					var items = $filter('filter')($scope.menuDataOriginal.items, {title: n});
 
-					// find all parent elements of the found elements and re add them to the map in order to 
+					// find all parent elements of the found elements and re add them to the map in order to
 					// ensure a correct menu tree.
 					angular.forEach(items, function(value) {
 						if (value['parent_nav_id'] > 0) {
@@ -178,7 +178,7 @@
 
 
 				$scope.data.nav_item_type = 1;
-				$scope.data.parent_nav_id = 0;
+				$scope.data.parent_nav_id = null;
 				$scope.data.is_draft = 0;
 
 				$scope.data.nav_container_id = 1;
@@ -197,7 +197,7 @@
 
 				$scope.$watch(function() { return $scope.data.nav_container_id }, function(n, o) {
 					if (n !== undefined && n !== o) {
-						$scope.data.parent_nav_id = 0;
+						$scope.data.parent_nav_id = null;
 						$scope.navitems = $scope.menu[n]['__items'];
 					}
 				});

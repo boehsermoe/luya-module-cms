@@ -87,7 +87,7 @@ class NavControllerTeste extends WebModelTestCase
             $this->createCmsNavFixture([
                 'nav1' => [
                     'id' => 1,
-                    'parent_nav_id' => 0
+                    'parent_nav_id' => null
                 ]
             ]);
             $this->createCmsNavItemFixture([
@@ -120,7 +120,7 @@ class NavControllerTeste extends WebModelTestCase
             $this->createCmsNavFixture([
                 'nav1' => [
                     'id' => 1,
-                    'parent_nav_id' => 0
+                    'parent_nav_id' => null
                 ]
             ]);
             $this->createCmsNavItemFixture([
@@ -149,7 +149,7 @@ class NavControllerTeste extends WebModelTestCase
             $this->createCmsNavFixture([
                 'nav1' => [
                     'id' => 1,
-                    'parent_nav_id' => 0
+                    'parent_nav_id' => null
                 ]
             ]);
             $this->createCmsNavItemFixture([
@@ -177,7 +177,7 @@ class NavControllerTeste extends WebModelTestCase
             $this->createCmsNavFixture([
                 'nav1' => [
                     'id' => 1,
-                    'parent_nav_id' => 0
+                    'parent_nav_id' => null
                 ]
             ]);
             $this->createCmsNavItemFixture([

@@ -109,7 +109,7 @@ class MenuHelper
      * @param integer $parentNavId
      * @param string $fromInheritNode
      */
-    private static function loadInheritanceData($parentNavId = 0, $fromInheritNode = false)
+    private static function loadInheritanceData($parentNavId = null, $fromInheritNode = false)
     {
         // get items from singleton object
         $items = isset(self::getNavItems()[$parentNavId]) ? self::getNavItems()[$parentNavId] : [];

@@ -132,7 +132,7 @@ class MenuController extends \luya\admin\base\RestController
      * @param array $parentGroup
      * @param int $index
      */
-    private function getItems(NavContainer $container, $parentNavId = 0, $parentGroup = [], $index = 1)
+    private function getItems(NavContainer $container, $parentNavId = null, $parentGroup = [], $index = 1)
     {
         $navs = $container->getNavs()->andWhere(['parent_nav_id' => $parentNavId])->all();
 

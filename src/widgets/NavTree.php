@@ -161,7 +161,7 @@ class NavTree extends Widget
         $this->_linkTag = ArrayHelper::remove($this->linkOptions, 'tag', 'a');
 
         if ($this->findQuery === null) {
-            $this->findQuery = Yii::$app->menu->find()->where(['container' => 'default', 'parent_nav_id' => 0])->all();
+            $this->findQuery = Yii::$app->menu->find()->where(['container' => 'default', 'parent_nav_id' => null])->all();
         }
     }
 
